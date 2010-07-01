@@ -12,4 +12,9 @@ plugin replicates the placeholder behavior for unsupported browsers.
 
 Usage
 =====
-$(':text[placeholder],:password[placeholder]').placeholder();
+
+It's easy!::
+
+    $(':text[placeholder],:password[placeholder]').placeholder();
+
+Enjoy.
