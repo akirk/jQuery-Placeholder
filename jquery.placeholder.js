@@ -16,11 +16,11 @@
     
     function Placeholder(input) {
         // We change the type of password fields to text so their placeholder shows.
-		// We need to store somewhere that they are actually password fields so we can convert
-		// back when the users types something in.
+        // We need to store somewhere that they are actually password fields so we can convert
+        // back when the users types something in.
         if (input.attr('type') == 'password') {
             input.attr('realType', 'password');
-		}
+        }
         this.input = input;
         // For IE because it doesn't allow changing the type of password inputs
         this.fakePassword = $("<input>").val(input.attr('placeholder')).focus(function() {
