@@ -9,20 +9,21 @@
         // Special treatment for password inputs
         if (input.attr('type') == 'password') {
             input.attr('realType', 'password');
+            this.isPassword = true;
         }
         this.input = input;
         // IE doesn't allow changing the type of password inputs
         this.fakePassword = $("<input>").val(input.attr('placeholder')).focus(function() {
             input.trigger("focus")
             $(this).hide();
-        }).css({width : input.width()});
+        });
     }
     Placeholder.prototype = {
         show : function(loading) {
             // FF and IE saves values when you refresh the page. If the user refreshes the page with 
             // the placeholders showing they will be the default values and the input fields won't be empty.
             if (this.input[0].value == '' || (loading && this.valueIsPlaceholder())) {
-                if (this.isPassword()) {
+                if (this.isPassword) {
                     try { // IE doesn't allow us to change the input type
                         this.input[0].setAttribute('type', 'input');
                     } catch (e) {
@@ -35,7 +36,7 @@
         },
         hide : function() {
             if (this.valueIsPlaceholder() && this.input.hasClass('placeholder')) {
-                if (this.isPassword()) {
+                if (this.isPassword) {
                     try {
                         this.input[0].setAttribute('type', 'password');
                     } catch (e) { }
@@ -46,9 +47,6 @@
                 this.input[0].value = '';
                 this.input.removeClass('placeholder');
             }
-        },
-        isPassword: function() {
-            return this.input.attr('realType') == 'password';
         },
         valueIsPlaceholder : function() {
             return this.input[0].value == this.input.attr('placeholder');
