@@ -25,7 +25,7 @@
             if (this.input[0].value == '' || (loading && this.valueIsPlaceholder())) {
                 if (this.isPassword) {
                     try { // IE doesn't allow us to change the input type
-                        this.input[0].setAttribute('type', 'input');
+                        this.input[0].setAttribute('type', 'text');
                     } catch (e) {
                         this.input.before(this.fakePassword.show()).hide();
                     }
