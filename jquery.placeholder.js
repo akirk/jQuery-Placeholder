@@ -1,7 +1,7 @@
 /* 
 * Placeholder plugin for jQuery
 * @author Daniel Stocks (http://webcloud.se)
-* @version 0.1 
+* @version 0.1
 */
 
 (function($) {
@@ -13,7 +13,7 @@
         }
         this.input = input;
         // IE doesn't allow changing the type of password inputs
-        this.fakePassword = $("<input>").val(input.attr('placeholder')).focus(function() {
+        this.fakePassword = $('<input class="placeholder">').val(input.attr('placeholder')).focus(function() {
             input.trigger("focus")
             $(this).hide();
         });
