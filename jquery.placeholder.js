@@ -14,7 +14,7 @@
         this.input = input;
         // IE doesn't allow changing the type of password inputs
         this.fakePassword = $('<input class="placeholder">').val(input.attr('placeholder')).focus(function() {
-            input.trigger("focus")
+            input.trigger("focus");
             $(this).hide();
         });
     }
@@ -41,7 +41,7 @@
                         this.input[0].setAttribute('type', 'password');
                     } catch (e) { }
                     // Restore focus for Opera and IE
-                    this.input.show()
+                    this.input.show();
                     this.input[0].focus();
                 }
                 this.input[0].value = '';
@@ -51,7 +51,8 @@
         valueIsPlaceholder : function() {
             return this.input[0].value == this.input.attr('placeholder');
         }
-    }
+    };
+    
     var supported = !!("placeholder" in document.createElement( "input" ));
     $.fn.extend({
         placeholder: function() {
