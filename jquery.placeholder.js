@@ -1,9 +1,8 @@
 /* 
 * Placeholder plugin for jQuery
 * @author Daniel Stocks (http://webcloud.se)
-* @version 0.1
+* @version 0.2
 */
-
 (function($) {
     function Placeholder(input) {
         // Special treatment for password inputs
@@ -52,7 +51,6 @@
             return this.input[0].value == this.input.attr('placeholder');
         }
     };
-    
     var supported = !!("placeholder" in document.createElement( "input" ));
     $.fn.extend({
         placeholder: function() {
