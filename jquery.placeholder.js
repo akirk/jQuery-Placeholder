@@ -21,7 +21,7 @@
         show : function(loading) {
             // FF and IE saves values when you refresh the page. If the user refreshes the page with 
             // the placeholders showing they will be the default values and the input fields won't be empty.
-            if (this.input[0].value == '' || (loading && this.valueIsPlaceholder())) {
+            if (this.input[0].value === '' || (loading && this.valueIsPlaceholder())) {
                 if (this.isPassword) {
                     try { // IE doesn't allow us to change the input type
                         this.input[0].setAttribute('type', 'text');
