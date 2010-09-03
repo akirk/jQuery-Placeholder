@@ -15,6 +15,6 @@ Usage
 
 It's easy!::
 
-    $(':text[placeholder],:password[placeholder]').placeholder();
+    $('input[placeholder], textarea[placeholder]').placeholder();
 
 Enjoy.
