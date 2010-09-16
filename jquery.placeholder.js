@@ -52,21 +52,19 @@
         }
     };
     var supported = !!("placeholder" in document.createElement( "input" ));
-    $.fn.extend({
-        placeholder: function() {
-            return this.each(function() {
-                if(!supported) {
-                    var input = $(this);
-                    var placeholder = new Placeholder(input);
-                    placeholder.show(true);
-                    input.focus(function() {
-                        placeholder.hide();
-                    });
-                    input.blur(function() {
-                        placeholder.show(false);
-                    });
-                }
-            });
-        }
-    });
+    $.fn.placeholder = function() {
+        return this.each(function() {
+            if(!supported) {
+                var input = $(this);
+                var placeholder = new Placeholder(input);
+                placeholder.show(true);
+                input.focus(function() {
+                    placeholder.hide();
+                });
+                input.blur(function() {
+                    placeholder.show(false);
+                });
+            }
+        });
+    }
 })(jQuery);
