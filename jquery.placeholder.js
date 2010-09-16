@@ -67,7 +67,6 @@
     var supported = !!("placeholder" in document.createElement( "input" ));
     $.fn.placeholder = function() {
         return supported ? this : this.each(function() {
-            console.log($(this).val());
             var input = $(this);
             var placeholder = new Placeholder(input);
             placeholder.show(true);
