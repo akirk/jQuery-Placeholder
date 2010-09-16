@@ -10,12 +10,18 @@
             input.attr('realType', 'password');
             this.isPassword = true;
         }
-        this.input = input;
+        // Prevent placeholder values from submitting
+        $(input[0].form).submit(function() {
+            if (input.hasClass('placeholder')) {
+                input[0].value = '';
+            }
+        });
         // IE doesn't allow changing the type of password inputs
         this.fakePassword = $('<input class="placeholder">').val(input.attr('placeholder')).focus(function() {
             input.trigger("focus");
             $(this).hide();
         });
+        this.input = input;
     }
     Placeholder.prototype = {
         show : function(loading) {
@@ -53,18 +59,16 @@
     };
     var supported = !!("placeholder" in document.createElement( "input" ));
     $.fn.placeholder = function() {
-        return this.each(function() {
-            if(!supported) {
-                var input = $(this);
-                var placeholder = new Placeholder(input);
-                placeholder.show(true);
-                input.focus(function() {
-                    placeholder.hide();
-                });
-                input.blur(function() {
-                    placeholder.show(false);
-                });
-            }
+        return supported ? this : this.each(function() {
+            var input = $(this);
+            var placeholder = new Placeholder(input);
+            placeholder.show(true);
+            input.focus(function() {
+                placeholder.hide();
+            });
+            input.blur(function() {
+                placeholder.show(false);
+            });
         });
     }
 })(jQuery);

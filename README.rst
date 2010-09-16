@@ -7,7 +7,7 @@ The HTML5 placeholder attribute is awesome, unfortunately only supported by some
 plugin replicates the placeholder behavior for unsupported browsers.
 
 - Checks for placeholder support before running
-- Tested in IE (6,7,8).
+- Tested in IE (6,7,8,9).
 - Works with password inputs
 
 Usage
