@@ -5,36 +5,17 @@
 (function($) {
     function Placeholder(input) {
         
-        // Special treatment for password inputs
+        this.input = input;
         if (input.attr('type') == 'password') {
-            input.attr('realType', 'password');
-            this.isPassword = true;
+            this.handlePassword();
         }
+        
         // Prevent placeholder values from submitting
         $(input[0].form).submit(function() {
             if (input.hasClass('placeholder')) {
                 input[0].value = '';
             }
         });
-        this.id = input[0].id;
-        
-        // IE < 9 doesn't allow changing the type of password inputs
-        // so we need to some extra stuff here
-        var fake = this.fakePassword = $('<input type="text">').focus(function() {
-            input.trigger("focus");
-            $(this).removeAttr('id').hide();
-        }).val(input.attr("placeholder"));
-        // Copy all the attributes from original input (but only the ones that are specified (IE < 8))
-        var attributes = $.map(input[0].attributes, function(item) {
-            if(item.specified) return item.name;
-        });
-        // Apply attributes to our fake password field
-        $.each(attributes, function(i, attr) {
-            if(input[0][attr] == "password") return;
-            fake.attr( attr, input[0][attr] );
-        });
-        
-        this.input = input;
     }
     Placeholder.prototype = {
         show : function(loading) {
@@ -68,6 +49,38 @@
         },
         valueIsPlaceholder : function() {
             return this.input[0].value == this.input.attr('placeholder');
+        },
+        handlePassword: function() {
+            
+            input = this.input;
+            
+            // Special treatment for password inputs
+            if (input.attr('type') == 'password') {
+                input.attr('realType', 'password');
+                this.isPassword = true;
+            }
+            
+            if ($.browser.msie && input[0].outerHTML) {
+                
+                console.log(this.isPassword);
+                
+                this.id = input[0].id;
+                // IE < 9 doesn't allow changing the type of password inputs
+                // so we need to some extra stuff here
+                var fake = this.fakePassword = $('<input type="text" class="placeholder">').focus(function() {
+                    input.trigger("focus");
+                    $(this).removeAttr('id').hide();
+                }).val(input.attr("placeholder"));
+                // Copy all the attributes from original input (but only the ones that are specified (IE < 8))
+                var attributes = $.map(input[0].attributes, function(item) {
+                    if(item.specified) return item.name;
+                });
+                // Apply attributes to our fake password field
+                $.each(attributes, function(i, attr) {
+                    if(input[0][attr] == "password") return;
+                    fake.attr( attr, input[0][attr] );
+                });
+            }
         }
     };
     var supported = !!("placeholder" in document.createElement( "input" ));
