@@ -9,11 +9,11 @@
             this.handlePassword();
         }
         // Prevent placeholder values from submitting
-        //$(input[0].form).submit(function() {
-        //    if (input.hasClass('placeholder')) {
-        //        input[0].value = '';
-        //    }
-        //});
+        $(input[0].form).submit(function() {
+            if (input.hasClass('placeholder')) {
+                input[0].value = '';
+            }
+        });
     }
     Placeholder.prototype = {
         show : function(loading) {
@@ -67,6 +67,7 @@
     var supported = !!("placeholder" in document.createElement( "input" ));
     $.fn.placeholder = function() {
         return supported ? this : this.each(function() {
+            console.log($(this).val());
             var input = $(this);
             var placeholder = new Placeholder(input);
             placeholder.show(true);
