@@ -1,10 +1,10 @@
 /* 
 * Placeholder plugin for jQuery
 * @author Daniel Stocks (http://webcloud.se)
-* @version 0.2
 */
 (function($) {
     function Placeholder(input) {
+        
         // Special treatment for password inputs
         if (input.attr('type') == 'password') {
             input.attr('realType', 'password');
@@ -16,11 +16,24 @@
                 input[0].value = '';
             }
         });
-        // IE doesn't allow changing the type of password inputs
-        this.fakePassword = $('<input class="placeholder">').val(input.attr('placeholder')).focus(function() {
+        this.id = input[0].id;
+        
+        // IE < 9 doesn't allow changing the type of password inputs
+        // so we need to some extra stuff here
+        var fake = this.fakePassword = $('<input type="text">').focus(function() {
             input.trigger("focus");
-            $(this).hide();
+            $(this).removeAttr('id').hide();
+        }).val(input.attr("placeholder"));
+        // Copy all the attributes from original input (but only the ones that are specified (IE < 8))
+        var attributes = $.map(input[0].attributes, function(item) {
+            if(item.specified) return item.name;
         });
+        // Apply attributes to our fake password field
+        $.each(attributes, function(i, attr) {
+            if(input[0][attr] == "password") return;
+            fake.attr( attr, input[0][attr] );
+        });
+        
         this.input = input;
     }
     Placeholder.prototype = {
@@ -29,10 +42,10 @@
             // the placeholders showing they will be the default values and the input fields won't be empty.
             if (this.input[0].value === '' || (loading && this.valueIsPlaceholder())) {
                 if (this.isPassword) {
-                    try { // IE doesn't allow us to change the input type
+                    try {
                         this.input[0].setAttribute('type', 'text');
                     } catch (e) {
-                        this.input.before(this.fakePassword.show()).hide();
+                        this.input.attr('id','').before(this.fakePassword.show().attr('id', this.id)).hide()
                     }
                 }
                 this.input[0].value = this.input.attr('placeholder');
@@ -46,7 +59,7 @@
                         this.input[0].setAttribute('type', 'password');
                     } catch (e) { }
                     // Restore focus for Opera and IE
-                    this.input.show();
+                    this.input.show().attr('id', this.id);
                     this.input[0].focus();
                 }
                 this.input[0].value = '';
