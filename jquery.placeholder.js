@@ -66,8 +66,8 @@
     };
     var supported = !!("placeholder" in document.createElement( "input" ));
     $.fn.placeholder = function() {
-        return supported ? this : this.each(function() {
-            var input = $(this);
+        return supported ? this : this.each(function() {        
+            var input = $(this);            
             var placeholder = new Placeholder(input);
             placeholder.show(true);
             input.focus(function() {
@@ -76,6 +76,17 @@
             input.blur(function() {
                 placeholder.show(false);
             });
+            
+            // On page refresh, IE doesn't re-populate user input
+            // until the window.onload event is fired.
+            if ($.browser.msie) {
+                $(window).load(function() {
+                    if(input.val()) {
+                        input.removeClass("placeholder");
+                    }
+                    placeholder.show(true);
+                });
+            }
         });
     }
 })(jQuery);
