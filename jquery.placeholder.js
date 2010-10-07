@@ -33,10 +33,8 @@
         },
         hide : function() {
             if (this.valueIsPlaceholder() && this.input.hasClass('placeholder')) {
-                
                 this.input.removeClass('placeholder');
                 this.input[0].value = '';
-                
                 if (this.isPassword) {
                     try {
                         this.input[0].setAttribute('type', 'password');
@@ -51,7 +49,6 @@
             return this.input[0].value == this.input.attr('placeholder');
         },
         handlePassword: function() {
-        
             var input = this.input;
             input.attr('realType', 'password');
             this.isPassword = true;
