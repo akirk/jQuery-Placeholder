@@ -19,7 +19,6 @@
         show : function(loading) {
             // FF and IE saves values when you refresh the page. If the user refreshes the page with 
             // the placeholders showing they will be the default values and the input fields won't be empty.
-            
             if (this.input[0].value === '' || (loading && this.valueIsPlaceholder())) {
                 if (this.isPassword) {
                     try {
@@ -34,6 +33,10 @@
         },
         hide : function() {
             if (this.valueIsPlaceholder() && this.input.hasClass('placeholder')) {
+                
+                this.input.removeClass('placeholder');
+                this.input[0].value = '';
+                
                 if (this.isPassword) {
                     try {
                         this.input[0].setAttribute('type', 'password');
@@ -42,8 +45,6 @@
                     this.input.show();
                     this.input[0].focus();
                 }
-                this.input[0].value = '';
-                this.input.removeClass('placeholder');
             }
         },
         valueIsPlaceholder : function() {
@@ -76,7 +77,6 @@
             input.blur(function() {
                 placeholder.show(false);
             });
-            
             // On page refresh, IE doesn't re-populate user input
             // until the window.onload event is fired.
             if ($.browser.msie) {
@@ -85,6 +85,14 @@
                         input.removeClass("placeholder");
                     }
                     placeholder.show(true);
+                    // What's even worse, the text cursor disappears
+                    // when tabbing between text inputs, here's a fix
+                    input.focus(function() {
+                        var range = this.createTextRange();
+                        range.collapse(true);
+                        range.moveStart('character', 1);
+                        range.select();
+                    });
                 });
             }
         });

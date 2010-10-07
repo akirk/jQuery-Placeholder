@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>IE cursor</title>
+</head>
+<body>
+    <form action="">
+        <h2>With Placeholders</h2>
+        <p><input type="text" placeholder="qwe" name="qwe"></p>
+        <p><input type="text" placeholder="jkl" name="jkl"></p>
+        <p><input type="text" placeholder="jkl" name="jkl"></p>
+        <p><input type="text" placeholder="jkl" name="jkl"></p>
+        <h2>No placeholders</h2>
+        <p><input type="text" name="qwe"></p>
+        <p><input type="text" name="jkl"></p>
+        <p><input type="text" name="jkl"></p>
+        <p><input type="text" name="jkl"></p>
+        </form>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="../jquery.placeholder.js"></script>
+<script>
+$(function(){
+	$("input[placeholder]").placeholder();
+});
+</script>
+</html>
