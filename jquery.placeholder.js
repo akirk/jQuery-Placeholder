@@ -17,7 +17,7 @@
     }
     Placeholder.prototype = {
         show : function(loading) {
-            // FF and IE saves values when you refresh the page. If the user refreshes the page with 
+            // FF and IE saves values when you refresh the page. If the user refreshes the page with
             // the placeholders showing they will be the default values and the input fields won't be empty.
             if (this.input[0].value === '' || (loading && this.valueIsPlaceholder())) {
                 if (this.isPassword) {
@@ -88,10 +88,12 @@
                     // What's even worse, the text cursor disappears
                     // when tabbing between text inputs, here's a fix
                     input.focus(function() {
-                        var range = this.createTextRange();
-                        range.collapse(true);
-                        range.moveStart('character', 1);
-                        range.select();
+                        if(this.value == "") {
+                            var range = this.createTextRange();
+                            range.collapse(true);
+                            range.moveStart('character', 0);
+                            range.select();
+                        }
                     });
                 });
             }
