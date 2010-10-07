@@ -85,16 +85,16 @@
                         input.removeClass("placeholder");
                     }
                     placeholder.show(true);
-                    // What's even worse, the text cursor disappears
-                    // when tabbing between text inputs, here's a fix
-                    input.focus(function() {
-                        if(this.value == "") {
-                            var range = this.createTextRange();
-                            range.collapse(true);
-                            range.moveStart('character', 0);
-                            range.select();
-                        }
-                    });
+                });
+                // What's even worse, the text cursor disappears
+                // when tabbing between text inputs, here's a fix
+                input.focus(function() {
+                    if(this.value == "") {
+                        var range = this.createTextRange();
+                        range.collapse(true);
+                        range.moveStart('character', 0);
+                        range.select();
+                    }
                 });
             }
         });
