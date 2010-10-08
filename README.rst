@@ -21,5 +21,6 @@ Enjoy.
 
 Credit
 ======
-Copyright 2010, Daniel Stocks (http://webcloud.se)
-Thanks to Nikita Vasilyev (http://elv1s.ru/) for feedback and contribution to the code.
+Copyright 2010, Daniel Stocks ( http://webcloud.se )
+
+Thanks to Nikita Vasilyev ( http://elv1s.ru/ ) for feedback and contribution.
