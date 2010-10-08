@@ -12,7 +12,7 @@
         }
         // Prevent placeholder values from submitting
         $(input[0].form).submit(function() {
-            if (input.hasClass('placeholder')) {
+            if (input.hasClass('placeholder') && input[0].value == input.attr('placeholder')) {
                 input[0].value = '';
             }
         });
