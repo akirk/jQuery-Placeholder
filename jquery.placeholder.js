@@ -1,6 +1,8 @@
 /* 
 * Placeholder plugin for jQuery
-* @author Daniel Stocks (http://webcloud.se)
+* ---
+* Copyright 2010, Daniel Stocks (http://webcloud.se)
+* Released under the MIT, BSD, and GPL Licenses.
 */
 (function($) {
     function Placeholder(input) {
