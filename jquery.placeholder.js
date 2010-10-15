@@ -1,4 +1,4 @@
-/* 
+/*
 * Placeholder plugin for jQuery
 * ---
 * Copyright 2010, Daniel Stocks (http://webcloud.se)
@@ -12,7 +12,7 @@
         }
         // Prevent placeholder values from submitting
         $(input[0].form).submit(function() {
-            if (input.hasClass('placeholder')) {
+            if (input.hasClass('placeholder') && input[0].value == input.attr('placeholder')) {
                 input[0].value = '';
             }
         });
@@ -66,8 +66,8 @@
     };
     var supported = !!("placeholder" in document.createElement( "input" ));
     $.fn.placeholder = function() {
-        return supported ? this : this.each(function() {        
-            var input = $(this);            
+        return supported ? this : this.each(function() {
+            var input = $(this);
             var placeholder = new Placeholder(input);
             placeholder.show(true);
             input.focus(function() {
