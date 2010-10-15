@@ -35,3 +35,7 @@ Credit
 Copyright 2010, Daniel Stocks ( http://webcloud.se )
 
 Thanks to Nikita Vasilyev ( http://elv1s.ru/ ) for feedback and contribution.
+
+TODO
+====
+- Clean up and make proper test cases.
