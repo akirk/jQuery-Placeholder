@@ -64,9 +64,9 @@
             }
         }
     };
-    var supported = !!("placeholder" in document.createElement( "input" ));
+    var NATIVE_SUPPORT = !!("placeholder" in document.createElement( "input" ));
     $.fn.placeholder = function() {
-        return supported ? this : this.each(function() {
+        return NATIVE_SUPPORT ? this : this.each(function() {
             var input = $(this);
             var placeholder = new Placeholder(input);
             placeholder.show(true);
