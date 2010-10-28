@@ -29,8 +29,8 @@
                         this.input.before(this.fakePassword.show()).hide();
                     }
                 }
-                this.input[0].value = this.input.attr('placeholder');
                 this.input.addClass('placeholder');
+                this.input[0].value = this.input.attr('placeholder');
             }
         },
         hide : function() {
