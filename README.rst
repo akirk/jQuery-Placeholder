@@ -34,10 +34,6 @@ Enjoy.
 
 Credit
 ======
-Copyright 2010, Daniel Stocks ( http://webcloud.se )
+Copyright 2011, Daniel Stocks ( http://webcloud.se )
 
 Thanks to Nikita Vasilyev and James Rosen for feedback and contribution.
-
-TODO
-====
-- Clean up and make proper test cases.
