@@ -17,8 +17,10 @@ iPhone ✓
 Android ✓
 
 *Please note*
-The placeholder attribute should not be used as an alternative to a label (it's better to hide the label with JavaScript if you must).
+The placeholder attribute should not be used as an alternative to a label.
 http://www.whatwg.org/specs/web-apps/current-work/multipage/common-input-element-attributes.html#the-placeholder-attribute
+
+If you must hide labels, do it with JavaScript as you activate the placeholder.
 
 
 Usage
@@ -34,7 +36,7 @@ Credit
 ======
 Copyright 2010, Daniel Stocks ( http://webcloud.se )
 
-Thanks to Nikita Vasilyev ( http://elv1s.ru/ ) for feedback and contribution.
+Thanks to Nikita Vasilyev and James Rosen for feedback and contribution.
 
 TODO
 ====
