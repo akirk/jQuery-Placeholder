@@ -77,16 +77,6 @@
                 placeholder.show(false);
             });
 
-            // Rewrite the val function to take the placeholder into account
-            var originalVal = input.val
-            input.val = function() {
-              if (arguments.length === 0 && this.hasClass('placeholder')) {
-                return '';
-              } else {
-                return originalVal.apply(this, arguments);
-              }
-            };
-
             // On page refresh, IE doesn't re-populate user input
             // until the window.onload event is fired.
             if ($.browser.msie) {
