@@ -32,6 +32,20 @@ It's easy!::
 
 Enjoy.
 
+Styling
+=======
+
+Native styling of HTML5 placeholders::
+
+    ::-webkit-input-placeholder {color: red;}
+
+    :-moz-placeholder {color: red;}
+
+jQuery-Placeholder toggles a .placeholder class for browser that don't natively support placeholders::
+
+    .placeholder { color: red }
+
+
 Credit
 ======
 Copyright 2011, Daniel Stocks ( http://webcloud.se )
