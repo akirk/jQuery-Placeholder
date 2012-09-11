@@ -58,8 +58,10 @@
             if ($.browser.msie && input[0].outerHTML) {
                 var fakeHTML = $(input[0].outerHTML.replace(/type=(['"])?password\1/gi, 'type=$1text$1'));
                 this.fakePassword = fakeHTML.val(input.attr('placeholder')).addClass('placeholder').focus(function() {
-                    input.trigger('focus');
                     $(this).hide();
+                    input.show();
+                    input.trigger('focus');
+                    input.removeClass('placeholder');
                 });
                 $(input[0].form).submit(function() {
                     fakeHTML.remove();
