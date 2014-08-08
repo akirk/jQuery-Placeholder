@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset=utf-8>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script src="jquery.placeholder.js"></script>
     <title>jQuery-Placeholder</title>
     <style>
-    input {padding:4px; width:225px;}
+    body {font-family: arial, sans-serif;}
+        input, textarea {padding:4px; width:225px; font-family: arial, sans-serif; font-size: 12px;}
+        textarea {width: 425px; height: 200px;}
+        .placeholder {color: #aaa;}
     </style>
 </head>
 <body>
@@ -20,9 +23,15 @@
         <p>
             <input type="password" placeholder="password" name="password">
         </p>
+        <p>
+            <textarea placeholder="A textarea placeholder" name="text"></textarea>
+        </p>
+        <p>
+            <button type="submit">Go</button>
+        </p>
     </form>
 <script>
-    $(':text[placeholder],:password[placeholder]').placeholder();
+    $('input[placeholder], textarea[placeholder]').placeholder();
 </script>
 </body>
 </html>
